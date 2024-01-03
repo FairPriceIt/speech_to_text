@@ -325,20 +325,20 @@ public class SwiftSpeechToTextPlugin: NSObject, FlutterPlugin {
         catch {
             os_log("Error removing trap: %{PUBLIC}@", log: pluginLog, type: .error, error.localizedDescription)
         }
-        do {
-            if let rememberedAudioCategory = rememberedAudioCategory, let rememberedAudioCategoryOptions = rememberedAudioCategoryOptions {
-                try self.audioSession.setCategory(rememberedAudioCategory,options: rememberedAudioCategoryOptions)
-            }
-        }
-        catch {
-            os_log("Error stopping listen: %{PUBLIC}@", log: pluginLog, type: .error, error.localizedDescription)
-        }
-        do {
-            try self.audioSession.setActive(false, options: .notifyOthersOnDeactivation)
-        }
-        catch {
-            os_log("Error deactivation: %{PUBLIC}@", log: pluginLog, type: .info, error.localizedDescription)
-        }
+//        do {
+//            if let rememberedAudioCategory = rememberedAudioCategory, let rememberedAudioCategoryOptions = rememberedAudioCategoryOptions {
+//                try self.audioSession.setCategory(rememberedAudioCategory,options: rememberedAudioCategoryOptions)
+//            }
+//        }
+//        catch {
+//            os_log("Error stopping listen: %{PUBLIC}@", log: pluginLog, type: .error, error.localizedDescription)
+//        }
+//        do {
+//            try self.audioSession.setActive(false, options: .notifyOthersOnDeactivation)
+//        }
+//        catch {
+//            os_log("Error deactivation: %{PUBLIC}@", log: pluginLog, type: .info, error.localizedDescription)
+//        }
         self.invokeFlutter( SwiftSpeechToTextCallbackMethods.notifyStatus, arguments: SpeechToTextStatus.done.rawValue )
 
         currentRequest = nil
